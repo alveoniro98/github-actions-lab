@@ -2,7 +2,7 @@ from app import add
 
 
 def test_add():
-    assert add(2, 3) == 10
+    assert add(5, 5) == 10
 
 def test_add_zero():
     assert add(5, 0) == 5
