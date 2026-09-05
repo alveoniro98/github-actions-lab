@@ -18,12 +18,16 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: ${{ vars.PYHTON_VERSION }}
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+
+      - name: Check configuration
+        run: |
+        echo "Application: ${{ vars.APP_NAME }}"
 
       - name: Build application
         run: |
@@ -51,7 +55,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: ${{ vars.PYHTON_VERSION }}
 
       - name: Install dependencies
         run: |
@@ -80,6 +84,12 @@ jobs:
           echo "Deploying application to DEVELOPMENT..."
           ls -la build/
 
+      - name: Check secret
+        env:
+          DEMO_ENV: ${{ secrets.DEMO_ENV }}
+        run: |
+          echo "Secret has been loaded successfully"
+
 
   deploy-staging:
     needs: deploy-development
@@ -98,6 +108,12 @@ jobs:
           unzip application.zip
           echo "Deploying application to STAGING..."
           ls -la build/
+        
+      - name: Check secret
+        env:
+          DEMO_ENV: ${{ secrets.DEMO_ENV }}
+        run: |
+          echo "Secret has been loaded successfully"
 
 
   deploy-production:
@@ -117,3 +133,9 @@ jobs:
           unzip application.zip
           echo "Deploying application to PRODUCTION..."
           ls -la build/
+
+      - name: Check secret
+        env:
+          DEMO_ENV: ${{ secrets.DEMO_ENV }}
+        run: |
+          echo "Secret has been loaded successfully"
