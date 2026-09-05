@@ -27,7 +27,7 @@ jobs:
 
       - name: Check configuration
         run: |
-        echo "Application: ${{ vars.APP_NAME }}"
+          echo "Application: ${{ vars.APP_NAME }}"
 
       - name: Build application
         run: |
