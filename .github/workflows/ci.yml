@@ -64,3 +64,23 @@ jobs:
       - name: Run tests
         run: |
           pytest
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Dowload build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: application-build
+
+      - name: Deploy application
+        run: |
+          mkdir deployment
+          unzip application.zip
+          cp build/* deployment/
+
+          echo "Application deployed successfully"
+          ls -la deployment/
