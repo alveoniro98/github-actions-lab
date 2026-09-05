@@ -97,7 +97,7 @@ jobs:
         run: |
           unzip application.zip
           echo "Deploying application to STAGING..."
-          ls -la build/
+          exit 1
 
 
   deploy-production:
