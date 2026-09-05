@@ -31,7 +31,7 @@ jobs:
 
       - name: Build application
         run: |
-          command-yang-tidak-ada
+          mkdir build
           cp app.py build/
           cp requirements.txt build/
           zip -r application.zip build/
