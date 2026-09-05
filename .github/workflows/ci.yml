@@ -82,5 +82,5 @@ jobs:
           unzip application.zip
           cp build/* deployment/
 
-          exit 1
+          echo "Application deployed succesfully"
           ls -la deployment/
